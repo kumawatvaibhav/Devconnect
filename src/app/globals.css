@@ -26,6 +26,24 @@ body {
     rgb(var(--background-start-rgb));
 }
 
+@keyframes upDown {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+}
+
+@keyframes sideways {
+  0%, 100% {
+    transform: translateX(0);
+  }
+  50% {
+    transform: translateX(-20px);
+  }
+}
+
 @layer utilities {
   .text-balance {
     text-wrap: balance;
