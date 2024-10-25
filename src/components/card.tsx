@@ -1,9 +1,17 @@
 import Image from "next/image";
+import React from "react";
 
-const EventCard = ({ title, description, image, color }) => {
+interface EventCardProps {
+  title: string;
+  description: string;
+  image: string;
+  color: string;
+}
+
+const EventCard: React.FC<EventCardProps> = ({ title, description, image, color }) => {
   return (
     <div className="relative bg-white shadow-lg rounded-lg overflow-hidden">
-      <div className="h-2 w-full" style={{ backgroundColor: color }}/>
+      <div className="h-2 w-full" style={{ backgroundColor: color }} />
       <Image
         src={image}
         alt={title}
@@ -12,7 +20,7 @@ const EventCard = ({ title, description, image, color }) => {
         height={500}
       />
       <div className="p-6 relative z-10">
-        <div className={`text-lg font-semibold`} style={{ color: color }}>
+        <div className="text-lg font-semibold" style={{ color }}>
           {title}
         </div>
         <p className="text-gray-500 mb-4">{description}</p>

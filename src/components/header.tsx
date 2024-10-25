@@ -1,4 +1,4 @@
-'use client';
+"use client";
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
@@ -6,21 +6,17 @@ import Image from "next/image";
 import logo from "../../public/logo.png";
 import { Button } from "./ui/button";
 import user from "../../public/placeholder.svg";
-import { getUserData } from "@/lib/data_project";
 
 export function Header() {
-  const [userData, setUserData] = useState([]);
-  const isLoggedIn = false;
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
 
-  // useEffect(() => {
-  //   if (!userData.length) {
-  //     getUserData(sessionStorage.getItem("userId")).then((data) => {
-  //       setUserData(data || []);
-  //     });
-  //   }
-  // }, []);
+  useEffect(() => {
+    // Only run on the client side
+    if (typeof window !== "undefined") {
+      setIsLoggedIn(!!sessionStorage.getItem("jwtToken"));
+    }
+  }, []);
 
- 
   return (
     <header className="h-20 flex items-center bg-white fixed top-0 left-0 w-full z-50 mx-auto px-6">
       <div className="h-25 max-w-2.5rem">
@@ -44,7 +40,7 @@ export function Header() {
         </div>
       </nav>
       <div id="login" className="mr-6">
-        {sessionStorage.getItem("jwtToken") ? (
+        {isLoggedIn ? (
           <Link href="profile">
             <Button
               className="rounded-full mt-auto"
