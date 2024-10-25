@@ -12,13 +12,13 @@ export function Header() {
   const [userData, setUserData] = useState([]);
   const isLoggedIn = false;
 
-  useEffect(() => {
-    if (!userData.length) {
-      getUserData(sessionStorage.getItem("userId")).then((data) => {
-        setUserData(data || []);
-      });
-    }
-  }, []);
+  // useEffect(() => {
+  //   if (!userData.length) {
+  //     getUserData(sessionStorage.getItem("userId")).then((data) => {
+  //       setUserData(data || []);
+  //     });
+  //   }
+  // }, []);
 
  
   return (
